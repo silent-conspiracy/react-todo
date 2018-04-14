@@ -29,8 +29,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Todo App</h1>
         </header>
-        <TodoInput addFunction={this.add.bind(this)} />
-        <TodoList listItems={this.state.todoList} />
+        <TodoInput addFunction={this.add.bind(this)}>
+          <h2>Add New Todo</h2>
+        </TodoInput>
+        <TodoList listItems={this.state.todoList}>
+          <h2>Current Todo List</h2>
+        </TodoList>
       </div>
     );
   }

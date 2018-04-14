@@ -10,6 +10,7 @@ class TodoInput extends React.Component {
   render() {
     return (
       <div>
+        {this.props.children}
         <input ref="_todoInput" type="text" />
         <button onClick={this.addTodoList.bind(this)}>Add</button>
       </div>

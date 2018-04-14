@@ -12,9 +12,12 @@ class TodoList extends React.Component {
 
   render() {
     return (
-      <ol>
-        {this.renderTodoList()}
-      </ol>
+      <div>
+        {this.props.children}
+        <ol>
+          {this.renderTodoList()}
+        </ol>
+      </div>
     )
   }
 }
