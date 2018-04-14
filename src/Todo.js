@@ -14,7 +14,7 @@ class Todo extends React.Component {
   }
 
   addTodoList() {
-    let todo = "Do something";
+    let todo = this.refs._todoInput.value;
     this.setState({
       todoList: this.state.todoList.concat([todo])
     });
@@ -31,7 +31,7 @@ class Todo extends React.Component {
   render() {
     return (
       <div className="Todo-body">
-        <input type="text" />
+        <input ref="_todoInput" type="text" />
         <button onClick={this.addTodoList}>Add</button>
         <ol>
           {this.renderTodoList()}
