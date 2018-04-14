@@ -10,6 +10,14 @@ class Todo extends React.Component {
         "Buy Dinner"
       ]
     }
+    this.addTodoList = this.addTodoList.bind(this);
+  }
+
+  addTodoList() {
+    let todo = "Do something";
+    this.setState({
+      todoList: this.state.todoList.concat([todo])
+    });
   }
 
   renderTodoList() {
@@ -24,7 +32,7 @@ class Todo extends React.Component {
     return (
       <div className="Todo-body">
         <input type="text" />
-        <button>Add</button>
+        <button onClick={this.addTodoList}>Add</button>
         <ol>
           {this.renderTodoList()}
         </ol>
