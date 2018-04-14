@@ -6,9 +6,18 @@ class Todo extends React.Component {
     this.state = {
       todoList: [
         "Buy Groceries", 
-        "Buy Lunch"
+        "Buy Lunch",
+        "Buy Dinner"
       ]
     }
+  }
+
+  renderTodoList() {
+    let tmpList = [];
+    for (let i=0; i<this.state.todoList.length; i++) {
+      tmpList.push(<li>{this.state.todoList[i]}</li>);
+    }
+    return tmpList;
   }
 
   render() {
@@ -17,8 +26,7 @@ class Todo extends React.Component {
         <input type="text" />
         <button>Add</button>
         <ol>
-          <li>{this.state.todoList[0]}</li>
-          <li>{this.state.todoList[1]}</li>
+          {this.renderTodoList()}
         </ol>
       </div>
     )
