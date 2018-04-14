@@ -1,26 +1,17 @@
 import React from 'react';
 
 class TodoInput extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      todoList: []
-    }
-    this.addTodoList = this.addTodoList.bind(this);
-  }
 
   addTodoList() {
     let todo = this.refs._todoInput.value;
-    this.setState({
-      todoList: this.state.todoList.concat([todo])
-    });
+    this.props.addFunction(todo);
   }
 
   render() {
     return (
       <div>
         <input ref="_todoInput" type="text" />
-        <button onClick={this.addTodoList}>Add</button>
+        <button onClick={this.addTodoList.bind(this)}>Add</button>
       </div>
     )
   }

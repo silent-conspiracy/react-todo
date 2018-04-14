@@ -1,21 +1,11 @@
 import React from 'react';
 
 class TodoList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      todoList: [
-        "Buy Groceries", 
-        "Buy Lunch",
-        "Buy Dinner"
-      ]
-    }
-  }
 
   renderTodoList() {
     let tmpList = [];
-    for (let i=0; i<this.state.todoList.length; i++) {
-      tmpList.push(<li>{this.state.todoList[i]}</li>);
+    for (let i=0; i<this.props.listItems.length; i++) {
+      tmpList.push(<li>{this.props.listItems[i]}</li>);
     }
     return tmpList;
   }
