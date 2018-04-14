@@ -1,14 +1,10 @@
 import React from 'react';
 
-class Todo extends React.Component {
+class TodoInput extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: [
-        "Buy Groceries", 
-        "Buy Lunch",
-        "Buy Dinner"
-      ]
+      todoList: []
     }
     this.addTodoList = this.addTodoList.bind(this);
   }
@@ -20,25 +16,14 @@ class Todo extends React.Component {
     });
   }
 
-  renderTodoList() {
-    let tmpList = [];
-    for (let i=0; i<this.state.todoList.length; i++) {
-      tmpList.push(<li>{this.state.todoList[i]}</li>);
-    }
-    return tmpList;
-  }
-
   render() {
     return (
-      <div className="Todo-body">
+      <div>
         <input ref="_todoInput" type="text" />
         <button onClick={this.addTodoList}>Add</button>
-        <ol>
-          {this.renderTodoList()}
-        </ol>
       </div>
     )
   }
 }
 
-export default Todo;
+export default TodoInput;
