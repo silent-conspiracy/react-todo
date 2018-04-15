@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+// Refer https://react-bootstrap.github.io/components/
 
 class TodoList extends React.Component {
   /*
@@ -12,11 +14,9 @@ class TodoList extends React.Component {
     let tmpList = [];
     for (let i=0; i<this.props.listItems.length; i++) {
       tmpList.push(
-        <button 
-        className="list-group-item list-group-item-action"
-        style={{textAlign:"left"}}>
+        <ListGroupItem style={{textAlign:"left"}}>
           {this.props.listItems[i]}
-        </button>
+        </ListGroupItem>
       );
     }
     return tmpList;
@@ -26,9 +26,9 @@ class TodoList extends React.Component {
     return (
       <div>
         {this.props.children}
-        <div className="list-group">
+        <ListGroup>
           {this.renderTodoList()}
-        </div>
+        </ListGroup>
       </div>
     )
   }
