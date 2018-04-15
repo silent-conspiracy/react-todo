@@ -8,6 +8,10 @@ class TodoInput extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.refs._todoInput.value = "Add new todos here";
+  }
+
   handleChange() {
     let todo = this.refs._todoInput.value;
     this.setState({
