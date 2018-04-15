@@ -4,7 +4,6 @@ import './App.css';
 import TodoList from './TodoList';
 import TodoInput from './TodoInput';
 import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -22,11 +21,7 @@ class App extends Component {
           <h1 className="App-title">Todo App</h1>
         </header>
         <Switch>
-          <Route exact path='/' render={ () => (
-              <TodoList listItems={this.props.todoList}>
-                <h2>Current Todo List</h2>
-              </TodoList>
-          )} />
+          <Route exact path='/' component={TodoList} />
 
           <Route path='/add' render={ () => (
               <TodoInput addFunction={this.add.bind(this)}>
@@ -39,8 +34,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state;
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

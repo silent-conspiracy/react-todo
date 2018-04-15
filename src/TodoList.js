@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 // Refer https://react-bootstrap.github.io/components/
+import { connect } from 'react-redux';
 
 class TodoList extends React.Component {
   /*
@@ -25,7 +26,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <h2>Current Todo List</h2>
         <ListGroup>
           {this.renderTodoList()}
         </ListGroup>
@@ -42,4 +43,8 @@ TodoList.defaultProps = {
   listItems: []
 }
 
-export default TodoList;
+function mapStateToProps(state) {
+  return { listItems: state.todoList };
+}
+
+export default connect(mapStateToProps)(TodoList);
