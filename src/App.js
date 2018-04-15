@@ -4,18 +4,9 @@ import './App.css';
 import TodoList from './TodoList';
 import TodoInput from './TodoInput';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      todoList: [
-        "Buy Groceries", 
-        "Buy Lunch",
-        "Buy Dinner"
-      ]
-    }
-  }
 
   add(todo) {
     this.setState({
@@ -32,7 +23,7 @@ class App extends Component {
         </header>
         <Switch>
           <Route exact path='/' render={ () => (
-              <TodoList listItems={this.state.todoList}>
+              <TodoList listItems={this.props.todoList}>
                 <h2>Current Todo List</h2>
               </TodoList>
           )} />
@@ -48,4 +39,8 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);
