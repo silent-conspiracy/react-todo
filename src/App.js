@@ -20,8 +20,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Todo App</h1>
         </header>
-        <TodoInput/>
-        <TodoList/>
+        <Switch>
+          <Route exact path='/' component={TodoList} />
+          <Route path='/add' component={TodoInput} />
+        </Switch>
       </div>
     );
   }
