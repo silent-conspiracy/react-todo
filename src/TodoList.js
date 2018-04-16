@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 // Refer https://react-bootstrap.github.io/components/
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class TodoList extends React.Component {
   /*
@@ -27,6 +28,9 @@ class TodoList extends React.Component {
     return (
       <div>
         <h2>Current Todo List</h2>
+        <button onClick={this.props.refreshFromServer}>
+          Refresh from Server
+        </button>
         <ListGroup>
           {this.renderTodoList()}
         </ListGroup>
@@ -47,4 +51,15 @@ function mapStateToProps(state) {
   return { listItems: state.todoList };
 }
 
-export default connect(mapStateToProps)(TodoList);
+function mapDispatchToProps(dispatch) {
+  return { 
+    refreshFromServer: function() {
+      axios.get('http://localhost:3000/todos.json').then(function(response) {
+        console.log(response);
+        dispatch( { type: "REFRESH_FROM_SERVER", payload: response.data } );
+      });
+    } 
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

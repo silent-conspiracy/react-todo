@@ -17,11 +17,13 @@ const ACTION_EXAMPLE = {
 
 function reducer(state=initialState, action={}) {
   // Responding to actions
-  if (action.type == "ADD_TODO") {
-    return { todoList: state.todoList.concat([action.payload]) };
-  }
-  else {
-    return state;
+  switch (action.type) {
+    case "ADD_TODO":
+      return { todoList: state.todoList.concat([action.payload]) };
+    case "REFRESH_FROM_SERVER":
+      return { todoList: action.payload };
+    default:
+      return state;
   }
 }
 
