@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class TodoInput extends React.Component {
   constructor(props) {
@@ -6,10 +7,6 @@ class TodoInput extends React.Component {
     this.state = {
       inputValue: ""
     }
-  }
-
-  componentDidMount() {
-    this.refs._todoInput.value = "Add new todos here";
   }
 
   handleChange() {
@@ -38,7 +35,7 @@ class TodoInput extends React.Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <h2>Current Todo List</h2>
         <input ref="_todoInput" type="text" onChange={this.handleChange.bind(this)} />
         {this.renderButton()}
       </div>
@@ -46,4 +43,12 @@ class TodoInput extends React.Component {
   }
 }
 
-export default TodoInput;
+function mapDispatchToProps(dispatch) {
+  return {
+    addFunction: function(todo) {
+      dispatch( {type: "ADD_TODO", payload: todo} );
+    }
+  }
+}
+
+export default connect(undefined, mapDispatchToProps)(TodoInput);
